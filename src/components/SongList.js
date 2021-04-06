@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 class SongList extends Component {
+    renderList = () => {
+        return this.props.songs.map((song) => {
+            return (
+                <div className='item' key={song.title}>
+                    <div className='right floated content'>
+                        <button className='ui button primary'>select</button>
+                    </div>
+                    <div className='content'>
+                        {song.title}
+                    </div>
+                </div>
+            )
+        })
+    }
     render() {
-        console.log(this.props);
         return (
-            <div>
-                songs list
+            <div className='ui divided list'>
+                {this.renderList()}
             </div>
         )
     }
@@ -16,8 +29,7 @@ class SongList extends Component {
 // and the data  can be passed to components as props 
 const mapStateToProps = (state) => {
     return {
-        songs: state.songs,
-        selectd: state.selectedSong
+        songs: state.songs
     }
 }
 
