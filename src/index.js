@@ -9,6 +9,7 @@ import reducers from './Reducers'
 const store = createStore(reducers)
 
 ReactDOM.render(
+  // the store can be accessed by any component
   <Provider store={store}>
     <App />
   </Provider>,
